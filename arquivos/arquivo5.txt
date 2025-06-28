@@ -1,0 +1,7 @@
+In a software development project, the resolution of an issue can be influenced by various factors, such as the number of developers involved, the complexity of the issue, the experience of the developers, multitasking, and polite comments. Therefore, understanding which factors influence its resolution time is crucial to reducing it and, consequently, to the project's outcomes.
+
+Objective: This work aims to evaluate the impact of attributes extracted from GitHub issue tracking repositories on the resolution time of issues. These attributes include the topical relevance of posted comments, the number of comments and developers involved in an issue, and the participation of top developers, whether in the creation, discussion, or resolution of the issues.
+
+Materials and Methods: The Ruby on Rails organization was chosen as the subject of this study due to its high issue tracking activity. Based on the collected data, the Spearman correlation method was applied to quantify the relationship between two attributes, and hypothesis tests were conducted to analyze the samples.
+
+Results: The results show that issues and pull requests created by top developers have a shorter average resolution time. Additionally, a trend was observed where the resolution time of issues and pull requests—and issues alone—increased with the number of comments and developers. Lastly, it was noted that the topical relevance of the comments was generally low, mostly ranging between 0 and 0.1.

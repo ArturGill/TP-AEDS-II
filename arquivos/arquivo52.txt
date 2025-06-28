@@ -1,0 +1,16 @@
+Many organizations need to collect data where Internet access is compromised. Skills, surveying, mining, reporting,
+biological studies, and environmental monitoring are examples of these activities, most of which are carried out in rural
+areas where wireless network technology does not work or
+operate at a reduced range. In this way, the data obtained, and which normally need to be sent to a central server, may arrive late and / or error. This paper presents
+an alternative that aims to facilitate the service of companies or government agencies that work with data collection
+under these conditions. It is an framework, opportunistic
+and context-aware, aimed at constructing systems for upload
+data collected in areas where access to network technology
+is of low quality or non-existent. The model produced for
+the framework performs the sending of data when verifying
+network availability, prioritizing the use of the network in
+situations in which energy and data packet are available.
+The implementation of this model for Android showed that
+it is possible to develop it for a particular system in particular, and that it can contemplate particularities of each
+system, such as the contexts, meta data of the files and more
+appropriate transmission logics in each case.

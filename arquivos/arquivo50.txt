@@ -1,0 +1,8 @@
+This paper presents the process of developing an application to aid in the
+teaching and learning of Graph Theory, to encourage and facilitate learning, using a
+graphical user interface that respects UI / UX standards and can run on multiple
+platforms. An idea that the student can use the resource to reinforce the content
+learned through the classroom and see how the algorithm works on graphs drawn in
+the application. In addition, an application even shows the relevant characteristics
+about the graph, which can display transparent information, which can be used to
+identify a specific characteristic of a given graph.

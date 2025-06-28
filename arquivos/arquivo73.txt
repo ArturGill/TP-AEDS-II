@@ -1,0 +1,12 @@
+Studies show the relevance of measuring the user satisfaction of
+groupware used in a software process. The user satisfaction may
+influence product efficiency, team motivation and project results.
+This research proposes a comparative approach to measure user satisfaction of collaborative tools used to support the software process
+based on the use of the following qualitative techniques: Thinking
+Out Loud and Questionnaire. The work presents the results of tests
+involving 8 volunteer students from an academic project. The students were divided into two groups of profiles according to their
+performance in the project. The results reveal that more productive
+students had different opinions about satisfaction for both techniques and a positive trend according to the Questionnaire results. On
+the other hand, the results from another group were very close for
+both techniques and there was a trend toward neutrality in terms
+of satisfaction.

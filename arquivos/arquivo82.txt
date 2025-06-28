@@ -1,0 +1,22 @@
+The ease of use of social networks, whether on a personal computer or through smartphone
+apps, coupled with increasingly effective algorithms in showing people their interests, has
+made the social networks nowadays even used by people who did not have so much contact with technology, such as senior citizens, for example. This growth in the number of
+users of social networks has provoked a revolution in the way people communicate, interact and, consequently, influence the opinions expressed in those environments. This was
+quickly perceived by the most diverse types of organizations, who came to seek in this
+electronic environment ways to reach new customers interested in consuming their products or services. Many of these organizations have sectors responsible for updating their
+profiles or pages in social networks with the news, creating several publications daily. In
+addition, to better understand the target audience, their wishes and their opinions about
+existing products and services, as well as the image of the organization vis-à-vis network
+users, it is necessary to analyze the available data. Currently there are several studies on
+how to analyze the content of these publications, because they are in natural language
+and have in many cases complex elements such as irony or sarcasm, while there are few
+works in Portuguese that are aimed at beginners. For this reason, this work aims to help
+researchers who want to start working in this area, bringing some of the main concepts
+involved, as well as their practical application, through the definition of a method for collecting and analyzing the data. As results of the work, we highlight the detailed collection
+and exemplification of the use of available libraries for the data collection of two of the
+main social networks of the present time, as well as of tools available for the analysis of
+the data collected. Throughout this process, it was also necessary to construct specific
+codes to filter the desired data and convert output formats from applications of collect to
+input formats of analysis tools, obtaining the steps that now can be easily understood and
+replicated by other researchers in their work, even if they do not have prior experience in
+the field.

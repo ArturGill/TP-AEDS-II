@@ -1,0 +1,9 @@
+With digital inclusion, more and more people are beginning to use electronic games as a means of entertainment. This platform can be used in various ways, including as a teaching method, combining entertainment and content so that students can learn in an interactive way and also develop other skills depending on the style of the game. However, there is great complexity in the creation of educational games, such as defining the content to be taught, the gameplay to be used, the technologies involved, the process of evaluating the game's quality, among other important aspects.
+
+Therefore, it is essential to analyze several factors before starting a project aimed at teaching content through games. This work presents the entire process carried out for the creation, development, and evaluation of a serious game called The Great Revolution, with the objective of teaching about the Industrial Revolution. For this, game development tools were used, such as Tiled and Unity, as well as some standards to develop scripts and storylines for the game’s narrative.
+
+An evaluation method was also applied to measure the quality of the game. The developed game was tested with high school students from the UFV Florestal Campus and was evaluated using the MEEGA+ Method and the Likert scale through a questionnaire in which students assessed the game and its characteristics.
+
+As a result, we achieved a 83.64% rate of positive responses and 10.30% of negative responses. Overall, the results were very satisfactory, and we were able to cover the entire process of creating a game to be used in learning specific content — from the creation of the game’s story to its development and application in the classroom.
+
+Additionally, the project resulted in the creation of a flowchart to better understand the game development process, which can be used as a foundation to facilitate the creation of future projects.

@@ -1,0 +1,8 @@
+This study aims to evaluate security vulnerabilities in web open
+source tools for issue tracking, based on the criteria proposed
+by ISO/IEC 27000 series standards and OWASP Community. The
+Owasp Guide was used to conduct the tests considering 10 most frequent vulnerabilities and the Owasp Zap tool was used to automate
+the tests. The tests were applied on three open source issue tracking
+tools namely Redmine, Mantis Bug Tracker and Bugzilla. The tests
+reports revealed few security vulnerabilities in the Redmine tool,
+but a lot of them in the context of Mantis Bug Tracker and Bugzilla.

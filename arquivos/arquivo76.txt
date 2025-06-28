@@ -1,0 +1,12 @@
+The lack of data has always been an obstacle for the understanding
+of the birds migratory movements, especially in the tropics. The recent development and increasing popularity of various projects of Citizen Science have
+provided a great set of data to the scientific community, which has grown exponentially. Such data have been colected and tabuladed by people without academic training, thus require a distinguished management and validation, because,
+otherwise, they can lead to innacurate conclusions. The study of migratory patterns of certain birds species is a good example of the use of Citizen Science,
+because birdwatching’s increasing popularity in tropical regions has allowed a
+data accumulation of species and regions that, so far, have never been satisfactorily sampled by the scientific community. The purpose of this paper is to use
+the Data Science and Citizen Science conjointly, in order to evaluate the reliability of the data that have been made available by two datasets with distinct
+characteristics, one based in vouchers (WikiAves) and the other based in undocumented observations (eBird). We have studied the migratory movements of
+four different birds species, with different migration patterns: Amazona pretrei,
+Attila phoenicurus, Casiornis fuscus and Tangara peruviana. Our results show
+that the WikiAves dataset, after analysis, was more satisfactory and consistent
+with the migratory patterns, compared to the eBird.

@@ -1,0 +1,9 @@
+A ferramenta MoreData busca facilitar o trabalho do analista de dados geoespaciais, ao simplificar os processos de enriquecimento semantico que ˆ
+muitas vezes sao realizados de maneira manual. Ela n ˜ ao estava preparada ˜
+para receber um grande volume de dados de maneira eficiente, ao considerar
+o tempo de execuc¸ao. Este trabalho apresenta uma nova abordagem ao mo- ˜
+delo de dados da MoreData, com o aux´ılio das bibliotecas GeoPandas e DaskGeoPandas, para que possam ser utilizadas. Realizou-se uma analise quanti- ´
+tativa das metricas tempo de execuc¸ ´ ao, uso de mem ˜ oria e uso de CPU, para ´
+as novas abordagens. Como resultado, foi poss´ıvel diminuir significativamente
+o tempo de execuc¸ao do enriquecimento de dados, e utilizar o MoreData para ˜
+grandes volumes de dados.

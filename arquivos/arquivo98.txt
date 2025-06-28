@@ -1,0 +1,8 @@
+Wireless Sensor Networks (WSNs) have been explored to be used in
+the Internet of Things (IoT). There are three basic strategies to evaluate WSN
+solutions: analytical analysis, simulation and real experimentation. The first
+one requires less cost, but is less precise. The last one, on the other hand, represents the real network, but requires a huge amount of investment. Therefore,
+simulation is the most adopted strategy in the literature. Among the existing simulators, MANNASim is one of the most adopted. However, MANNASim has not
+been validated so far. Thus, the objective of this work is to validate the MANNASim simulator by comparing its results with real ones. With the conclusion of
+this work, it is expected that MANNASim can continue to be a constant target of
+researchers.

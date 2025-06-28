@@ -1,0 +1,8 @@
+This paper presents the definition of a usability centred generic methodology for the conception
+of web systems. It was built based on the principles of the User Centred Design Process,
+presented by the World Wide Web Consortium (W3C). The methodology defines the disciplines
+of UX Analysis, UX Design and UX Evaluation, supported by tasks which define, develop and
+evaluate the interfaces of a web system that comply with the users characteristics, needs, and
+objectives. Its construction was formalized on the Eclipse Process Framework (EPF). The paper
+also presents how the developed methodology can be applied to the Waterfall and Iterative and
+Incremental process models

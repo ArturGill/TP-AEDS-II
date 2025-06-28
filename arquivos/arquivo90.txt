@@ -1,0 +1,9 @@
+The Classroom Assignment Problem is an obstacle recurrent in the institution of degree
+level on Brazil. The Classroom Assignment Problem consists in allocate classes of subjects in
+predefined classrooms searching attend the max of restrictions of the model. This paper has by
+objetive present a genetic algorithm able to create viable and quality allocations for the Classroom
+Assignment Problem based in the physical structure of the Universidade Feral de Vic¸osa - Campus
+Florestal. The data used for generate the computational experiments were collected by means of real
+allocations existents on the Campus. The use of the genetic algorithm for resolve the Classroom
+Assignment Problem has generated solutions of quick form and with high quality, then showed
+efficient for being applied on UFV - Campus Florestal.

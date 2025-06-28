@@ -1,0 +1,5 @@
+In the context of mobile services, it is crucial that a company that develops these services knows its customers. One way to provide this knowledge is
+to profile users. An important aspect of such a profile concerns the characteristics of the mobile device used by the user. However, getting these features is not
+an easy task. In this work, a meta-data web service was developed to extract details of smartphones from trusted sites, returning a database with details about
+the type of device used. With the data returned, some testing and analysis was
+done to get the profile description of mobile users.

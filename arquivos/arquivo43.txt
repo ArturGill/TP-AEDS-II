@@ -1,0 +1,5 @@
+In the recent years, we are facing an increasing in the number of mobile users and, consequently, on the
+amount of data collected from them and available to the industry. Therefore, companies are willing to use such data
+to discover insiths that may help them on providing better and more personalized services. In this work, we explore
+mobile and census data of thousands of users in Brazil to understand how their local of residence is correlated to their
+smartphones.

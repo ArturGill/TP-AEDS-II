@@ -1,0 +1,9 @@
+The presence of uncertainties, such as parametric ones, in optimization problems can
+cause nominal solutions to become infeasible. In this paper we propose an algorithm based on the
+metaheuristic Teaching-learning-based optimization (TLBO) that solves the robust version of the
+I-Beam Problem, taking into account this type of uncertainty. The implementation has a non-robust
+algorithm called NMOTLBO that obtains solutions that disregard uncertainties (nominal solutions),
+and a robust algorithm with the application of two uncertainty techniques, the WCSA (RMOTLBOWCSA) and the WCE (RMOTLBO-WCE). The experiments show that nominal solutions, when in
+the presence of uncertainties, have a drastic deterioration in the values of their objective functions.
+In addition, the results indicate that through the Hypervolume and IGD metrics the robust solutions
+found are better than the nominal solutions when subjected to the worst cases of uncertainties

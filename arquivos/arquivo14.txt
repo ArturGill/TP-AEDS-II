@@ -1,0 +1,10 @@
+The process of integrating a solution into an existing cloud infrastructure requires some important steps to achieve functional and efficient synergy.
+There are necessary adaptations that permeate at different levels, ranging from
+changes in implementation details of the initial solution to integration into the
+infrastructure itself. When there is a characterization of Big Data, the use of
+cloud services ends up being a strong facilitator of aggregation of the system
+of interest. This is because both service demand issues and quality issues are
+addressed, which ends up facilitating the process of creating a cohesive and
+effective infrastructure. In this paper, a mobile application installation recommendation solution was adapted to consider segments, and deployed in an organizational Big Data environment of a data intelligence company. As a result,
+it was possible to apply the solution to more than 1 million users and verify the
+probability of installing each segment for each user.
