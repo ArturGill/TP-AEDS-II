@@ -1,0 +1,12 @@
+After the creation of the Law on Access to Information, all
+information produced by public entities has become public,
+and thus accessible to all citizens, except those that are confidential. Even though, this does not mean that it is easily
+available in a user-friendly format, that is, a format in which
+ordinary citizens can easily read the information when they
+access it.
+This paper proposes a solution for poor data availability
+through a web system that aims to provide relevant municipal transparency information and easy access to users. Using
+Data Science techniques, the developed system is able to display to the user information from multiple cities formatted in
+a more objective manner, generating various structures such
+as graphs and reports that help in the identification of possible anomalies related to public expenditure, coming from
+these cities.

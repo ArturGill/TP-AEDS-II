@@ -1,0 +1,9 @@
+This paper evaluates the application of a gamification approach based
+on researches on the field of study known as “game studies” to a freshman
+computer science class, since both these areas have a weak connection in the
+literature. In order to achieve it, an approach to aspects that aim to generate
+fun in games is merged with aspects to rise motivation among those involved in
+gamification applications. This approach lasts for the whole semester, and the
+students who had an active participation showed better levels of performance,
+socialization and interest on computer science classes and the university campus,
+as well as a decrease in the average level of computer science evasion.

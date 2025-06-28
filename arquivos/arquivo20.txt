@@ -1,0 +1,12 @@
+The automatic detection of planting rows in different
+crops is not a simple job and requires an effort to be performed
+manually by the farmer. The automation of this process is a
+good example of an application that has become promising
+with the insertion of digital technology in agriculture to plan
+crop routes. This paper compares the performance of three
+agricultural crop row identification algorithms based on software
+simulated images and photographs captured by an Unmanned
+Aerial Vehicle (UAV). The results of the proposed solutions were
+validated by the Dice Similarity Coefficient (DSC) metric by
+comparing the results with the idealized path masks. The results
+obtained a performance of up to 99.5%.

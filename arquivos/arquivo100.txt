@@ -1,0 +1,11 @@
+Wireless Sensor Networks are used in different contexts, including
+monitoring of climatic aspects in a remote region, actuators for geographic and
+spatial events as well as applications in military or medical area. However, this
+particular type of network has a limited power capacity and this directly impacts
+its processing capacity and the amount of available memory. Based on this limitation scenario a generic model that seeks to use a more balanced way the
+computational resources of the network was developed, with autonomic computing concepts that create a self configurable network. In this paper we develop
+instances based on this generic model to improve network performance and prolong its service life. We have implemented two more sophisticated algorithms
+and analyze their behavior in experiments performed in real sensor networks,
+also known as testbeds. The results show that the implementations maintain or
+improve important aspects such as the number of sent messages and the number
+of packets transferred across the network.

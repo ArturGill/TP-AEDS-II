@@ -1,0 +1,10 @@
+A much debated issue in educational institutions is how to evaluate
+the teaching-learning process. Traditionally, assessments are carried out using
+forms applied at the end of each school term. This work proposes a continuous
+assessment, class by class, from a network of participatory sensing, with the
+objective of generating more detailed metrics for the faculty. With this objective,
+the Censeo application was created, carrying out a case study with the use of it
+by three classes of a higher course. At the end of this, a system evaluation form
+was applied and the results demonstrated the effectiveness and capacity of this
+participatory sensing network in generating data and analysis in the context of
+student evaluation of teaching.

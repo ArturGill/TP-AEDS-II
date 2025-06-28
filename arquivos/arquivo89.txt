@@ -1,0 +1,11 @@
+In recent years the evolution of technology has brought significant changes of great impact, especially on mobile devices. The features offered by today’s cell phones make it
+much easier to perform some tasks, which were previously only available through textit
+desktops. It is important to note that mobile applications need to be practical, but they
+also need to interact in a pleasant way with their users. Thus, the objective of this work is
+to perform the usability evaluation of two applications, Whova and MyMobiConf, which
+are used for supporting participation in events. Two types of evaluation will be used, the
+heuristic evaluation, which is supported by a checklist in order to indicate usability failures through a technical look, and the usability test, which already aims to focus on the
+user experience in Highlighting the factors of ease of learning and satisfaction in use. The
+results obtained indicated a higher level of user satisfaction compared to the functionality
+offered by MyMobiConf. While Whova presented better results compared to the technical
+aspect presented by their interfaces.

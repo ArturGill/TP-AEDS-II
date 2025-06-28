@@ -1,0 +1,15 @@
+The Traveling Salesman Problem with Time Window (TSPTW) is an important
+optimization problem because of the savings generated in transportation costs
+and the final price of the products. This paper presents a proposal for the
+resolution of a real identified TSPTW in the company Madeireira São Geraldo
+de Itaúna Ltda., more specifically in the delivery service. All requests have time
+windows for delivery time, such as before or after a certain time. A solution to
+the problem is found through an algorithm developed using the concepts of
+Genetic Algorithms (GAs). To demonstrate the efficiency of the algorithm, three
+different experiments are performed, varying the population size and number of
+individuals. In the first, the result is compared to a benchmark with similar
+characteristics; And in the two other, the obtained results for the real problem
+are compared to the result of a simple greedy algorithm. In the first experiment
+the algorithm found solutions close to or equal to optimal. In the second and
+third experiments, the costs found by the algorithm are 56.55% of the greedy
+solution.

@@ -1,0 +1,9 @@
+The presence of uncertainties can change the value of the objective function to be optimized as well as the values of the constraint functions, therefore the achieved solutions can become
+infeasible and/or with undesirable costs. This paper proposes a robust version of the Economic
+Dispatch Problem (EDP), where parametric uncertainties are considered. Three techniques were
+implemented to deal with the uncertainties in the problem. The three techniques were incorporated
+in a genetic algorithm in order to solve the EDP. Inicially, it was shown that solutions that desconsider the uncertainties (nominal solutions), when subjected to the uncertainties (disturbed nominal
+solutions), are susceptible to significant deterioration in their objective values. In the experiment, it
+was verified that the robust solutions, obtained from the proposed techniques, have better objective
+values that the disturbed nominal solutions objective values. The student wrote the text, built the
+mathematical model, implemented the code and performed the experiments.

@@ -1,0 +1,6 @@
+This work used a NasNetMobile convolutional neural network (CNN) 
+to identify eucalyptus indexes that are productive and 
+drought-resistant, based on a leaf analysis. The dataset is composed of 17,790 images, after data augmentation, 
+and was divided into 4 classes. The final test was divided into 3 stages. In stage I, the number of dense layers was tested, in stage II, the regularization of evasion 
+and L2, and in stage III, k-fold cross-validation was performed with k = 10. For cross-validation, the best model achieved an accuracy of 82.69% in training, 63.96% in validation, 
+and 56.70% with the test images.

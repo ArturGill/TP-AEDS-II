@@ -1,0 +1,7 @@
+The optimization of the power distribution in thermoelectric power system is vital, since
+the generation costs are high, making it expensive. The problem of economic dispatch is precisely
+to solve the problem by modeling a continuous optimization problem in an attempt to minimize
+these costs. Aiming for more realism, this paper presents a proposal using Bee Algorithm, called
+PDEZOPs-BA, to solve the problem with the Prohibited Operating Zones(POZ) variant, which adds
+discontinuity to the dispatch problem. This paper presents results obtained through case studies
+based on the problem of economic dispatch with POZs, with the purpose of validating PDEZOPsBA.

@@ -1,0 +1,13 @@
+The search for more sophisticated tools and teaching methods have
+grown significantly in recent years, especially due to the scarcity of relevant and
+low priced artifacts in the context of programming logic learning. It was realized
+the need to introduce knowledge of computer science area in basic education a
+long time ago. To make this possible, this kind of knowledge should be presented
+from an early age, instigating the child’s imagination with a more practical and
+fun material. With this in mind we have built an educational toy that aims to
+teach and entertain children from 6 years of age, presenting programming logic
+friendlier than older and conservative methods of teaching, along with low cost
+attached to it’s simple built. We performed tests with children to experiment the
+toy, and analyzing the data collected based on the proposed age range, we could
+observe that the essence of the application, of teaching the basis of sequential
+programming logic, was achieved.

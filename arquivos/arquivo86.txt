@@ -1,0 +1,7 @@
+Several tools are used in software development that record the information about team work. In general, these tools have different vocabularies,
+which makes it difficult to measure team collaboration. In this context, this paper presents a tool capable to integrate collaborative data from heterogeneous
+sources and performing the analysis of collaborative participation in software
+projects. The analyses are done after the application of commonly used metrics in social networks that evaluate the relevance of a node in relation to the
+network. For the evaluated software project, 87.5% of the most active users were
+present in the exchange of messages and the coordination of tasks; Other 80%
+were involved in both the message exchange and the shared edition of artifacts.

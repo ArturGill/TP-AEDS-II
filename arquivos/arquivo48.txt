@@ -1,0 +1,1 @@
+Skin cancer is one of the most common types of cancer in Brazil, including melanoma, a type of malignant tumor responsible for many deaths. This study aims to detect melanomas through digital image processing, analyzing symmetry, color, and irregularity of edges, and classifying them using artificial neural networks.

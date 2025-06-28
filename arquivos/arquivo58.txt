@@ -1,0 +1,12 @@
+Recently a new problem has been proposed to better contemplate the interdependence
+between the components of real problems, the Traveling Thief Problem. This problem results from
+the combination of two classical problems of computation, the TSP (Traveling Salesman Problem)
+and the KP (Knapsack Problem). Because it is a multicomponent problem, the optimal solution
+of the sub problems does not guarantee the optimal solution of the problem as a whole. Different
+approaches have emerged to address this problem. The proposed algorithms generally make use of
+Meta Heuristics, and because of this they have a large number of parameters to be defined. However
+choosing these parameters properly is not a simple task, since they directly affect the quality of the
+solutions found. To assist in this process some automatic configuration tools have arisen and are
+based on searching in the parameter space the configurations that improve the performance of the
+optimization algorithms. This work aims to find the best parameters for a genetic algorithm used in
+the resolution of the Traveling Thief Problem, making use of these tools.

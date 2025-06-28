@@ -1,0 +1,8 @@
+With the increasing of contributors and companies in open source
+projects it is necessary to study the maturity of the adopted development processes. This paper proposes quantitative metrics, based
+on the CMMI, MPS.BR and OMM models, to evaluate the maturity
+of Software Configuration Management (SCG) processes in open
+source projects. The metrics were automated and applied on data
+from 6 projects hosted on GitHub. The results were unsatisfactory,
+in terms of best practices of the SCG. Furthermore, for all the projects were found some gaps in terms of the change control ow and
+the traceability of the releases configuration items.

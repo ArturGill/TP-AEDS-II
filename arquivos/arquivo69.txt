@@ -1,0 +1,9 @@
+Educational games are an attractive way of teaching between most of
+the young students of high school or college, although it’s still not much explored
+by the teachers of schools or/and universities. Many times those students fails in
+finishing their course by lack of interest in classes, specially in the area of exact
+sciences, since most of them consider such disciplines difficult. Therefore, this
+work presents the development, analysis and tests of the game Draw the Function, an educational game for teaching in the area of exact sciences, specifically
+mathematical functions. During the tests we observed that Draw the Function
+has a pedagogical capacity, helping in the teaching of mathematical functions
+as well as being an attractive and motivating game for its players.

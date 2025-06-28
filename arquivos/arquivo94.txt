@@ -1,0 +1,12 @@
+Collision detection algorithms are used to detect when
+virtual objects collide and the results of these collisions.
+This type of algorithm is used by many research areas such
+as simulation. automatic path finding, tolerance checking,
+among others. This type of algorithm is processed in realtime. Intel created the HARP Platform which uses a PCI
+with 8GB/s bandwidth, this decreased the memory latency
+allowing real-time processing of fine grain applications
+such as collision detection algorithms. In this paper we
+propose a heterogeneous system in order to use the FPGA
+on the HARP as an accelerator for collision detection
+algorithms. Our results show a speedup of 14.5% in
+execution time.

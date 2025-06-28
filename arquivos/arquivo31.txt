@@ -1,0 +1,12 @@
+Devices on a wireless body area network monitor clinical signs of
+patients. The importance contained in these data suggests that they should be
+transmitted and maintained in a private and secure manner. Thus, the importance of adhering to security protocols, such as authentication between network
+devices, is evident. However, the devices that make up the body network have
+specific limitations. These limitations can be pointed out as batteries with low
+energy capacity, in addition to the reduced data transmission capacity, low processing power, and others. Based on the security principles and the specificities
+of the network, this work aims to present an empirical analysis about the performance and consumption of hardware resources by authentication protocols.
+In this investigation, methods that use physiological signals to produce the secret keys of each section were considered. Analyzes were carried out about
+execution time, memory consumption, goodput, in addition to the false acceptance and false rejection metrics about authentication attempts. When exploring
+the results obtained, the highlight of a protocol on execution time and the need
+for more accurate synchronization for application in real scenarios is remarkable. However, the lesser memory consumption and greater precision during the
+authentication process of the rival method.

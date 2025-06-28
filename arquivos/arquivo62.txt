@@ -1,0 +1,12 @@
+ Wireless Body Area Networks (WBANs) have been widely employed
+in medical environments to aid communication between devices and the transmission of collected data, such as vital signs of patients. As it serves to support
+medical applications, WBANs require reliability on the communication between
+sensor nodes and base stations. However, given the natural vulnerabilities of
+wireless communication, such as inferences and losses, solutions need to bypass issues faced in wireless communication. In this paper, we evaluate the
+power consumption of devices in a scenario similar to a hospital environment in
+order to compare the DCAA and PDAC protocols, both specifically designed for
+wireless body networks. The experiments demonstrate a slightly higher power
+consumption for PDAC compared to DCAA. However, because it has a more
+robust and efficient channel control and allocation, PDAC offers characteristics
+that benefit the quality of the communication, which accredits it as an adequate
+protocol to WBAN.

@@ -1,0 +1,11 @@
+Conduct research with alumni is one of the main source of information inside an institution.
+From the obtained results, the institution and their courses can make decisions to improve its
+provided services and the graduates’ experience. In order to investigate the market perfomance
+of the Alumni’s from the bachelor of Computer Science and Computer Technician courses, both
+of then from Universidade Federal de Vic¸osa – Florestal Campus, and provide parameters for
+the institute, quantitative research was carried out to gather information from this audience. The
+purpose of the work was achieved through the construction of a system, which provides a questionnaire for Alumni, captures responses, analyzes the obtained data and turn the information
+available to application administrators so they can take the necessary steps. The main contribution of this research was to assist in mapping the profile of Alumni and the current job avaliable
+in technology areas. This work extracts the results achieved with the research as well as the
+methodology used in the construction of the system and the questionnaires in the collection,
+analysis and data interpretation.

@@ -1,0 +1,10 @@
+Nowadays, with everything running very fast and dynamic, it is difficult to maintain a level of
+productivity in the scenarios that people are involved in when it comes to software development. Agile methodologies, such as the Scrum framework, are widely used to manage software
+development projects in a lightweight way in order to improve the software quality and team
+organization. However, the act of developing is not seen as amusing and is often considered wearisome and monotonous. Gamification is a term that has been approached quite often among
+scholars, in different settings, influencing the type of practice of people in their respective environments. Gamification has characteristics that present a way to perform the activities in a more
+pleasurable way, generating satisfaction and motivating those involved in a project. The present
+work seeks to relate concepts present in the Scrum framework with concepts present in game
+design and to map to a new approach. The main contribution of this research is to demonstrate
+the positive effects of this mapping, inserting motivational aspects in such a way that positively
+influence the social, cultural and educational relationship of a specific group.

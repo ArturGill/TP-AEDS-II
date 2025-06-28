@@ -1,0 +1,9 @@
+The development of new generation sequencing techniques has brought a large volume
+of biological data and new computational challenges related to it. Within this context the Human Genetic Diversity Laboratory has developed a tool that gathers information from 11 public
+biological databases. Despite having been successful in this integration, the way the tool was
+implemented was not the most efficient, which led to an unnecessary expense consuming computational resource and time in the return of the analysis. In this work we re-engineered the tool
+in a distributed and parallel environment through a computer cluster, using the Apache Hadoop
+framework, with the objective of supporting the processing of this large data volume. Early
+tests showed that the new tool was successful, spending considerably less memory and time on
+the heavier tests. In addition, a new SNP annotation tool is also proposed in the context of this
+new environment.

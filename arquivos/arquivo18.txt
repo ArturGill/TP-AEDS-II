@@ -1,0 +1,10 @@
+The identification of drought-resistant eucalyptus species can bring
+numerous advantages to the world industry. Currently, with high climatic variations occurring globally, with emphasis on prolonged dry seasons, thousands of
+hectares of eucalyptus have had their production impaired. As this is a vital raw
+material for the industry, its loss causes damage in several segments. This work
+aims to use two machine learning methods: Decision Tree and Random Forest,
+with the purpose of identifying, based on data collected in the field, which are
+the most relevant variables to classify a eucalyptus species as resistant. or not
+to dry. In the end, it will be possible to observe that the highest accuracy of each
+of the models mentioned were respectively: 70.2% and 63.1%, and the most important bioidentifiers, for classification, in order of relevance were: leaf water
+potential, specific leaf area and leaf length.
