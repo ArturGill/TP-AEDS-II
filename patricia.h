@@ -1,5 +1,11 @@
 #include <stdio.h>
-typedef char* TipoChave; /* a definir, dependendo da aplicacao */
+#include "ListaOcorrencia.h"
+#define tam_max 45
+typedef char string[tam_max];
+typedef struct TipoChave{
+    char* chave;
+    ListaOcorrencias ocorrencias;
+}TipoChave;
 typedef unsigned char TipoIndexAmp;
 typedef unsigned char TipoDib;
 typedef enum {
@@ -13,15 +19,15 @@ typedef struct TipoPatNo {
       TipoIndexAmp Index;
       TipoArvore Esq, Dir;
     } NInterno ;
-    TipoChave Chave;
+    TipoChave Chaveext;
   } NO;
 } TipoPatNo;
-
+void ImprimirEmOrdem_Patricia(TipoArvore a);
 void DestruirArvore(TipoArvore a);
-TipoDib Bit(TipoIndexAmp i, TipoChave k);
-TipoArvore Insere(TipoChave k, TipoArvore *t);
-TipoArvore InsereEntre(TipoChave k, TipoArvore *t, int i);
-void Pesquisa(TipoChave k, TipoArvore t);
-TipoArvore CriaNoExt(TipoChave k);
+TipoDib Bit(TipoIndexAmp i, char* k);
+TipoArvore Insere(char* k, TipoArvore *t,int id_doc);
+TipoArvore InsereEntre(char* k, TipoArvore *t, int i,int id_doc);
+void Pesquisa(char* k, TipoArvore t);
+TipoArvore CriaNoExt(char* k);
 TipoArvore CriaNoInt(int i, TipoArvore *Esq,  TipoArvore *Dir);
 short EExterno(TipoArvore p);

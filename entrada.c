@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <string.h>
-
+#include "patricia.h"
 #include "entrada.h"
 
 PalavraInd v[1000];
@@ -90,6 +90,7 @@ void token_palavras(PalavraInd *pal)
 
 void ler_pocs(ListaArquivos *lista)
 {
+    TipoArvore a = NULL;
     int i;
     for (i = 0; i < lista->qtd_arq; i++)
     {
@@ -112,8 +113,11 @@ void ler_pocs(ListaArquivos *lista)
             token_palavras(&p_temp);
             if(strlen(p_temp.nome) > 0)
             {
-                InserePalavraIndice(p_temp.nome, idDoc); // insere no vetor
+                InserePalavraIndice(p_temp.nome, idDoc); 
                 InsereHash(p_temp.nome, idDoc, p, Tabela);
+                a = Insere(p_temp.nome, &a,idDoc);
+                
+
             
                 int encontrada = 0;
                 for(int k = 0; k < tot_unicas; k++)
@@ -130,10 +134,12 @@ void ler_pocs(ListaArquivos *lista)
                 }
             }            
         }
+        
         fclose(arq);
         lista->n_i[i] = tot_unicas;
         free(palavras_unicas);
     }
+    ImprimirEmOrdem_Patricia(a);
 }
 
 void ImprimeIndiceInvertido() {
