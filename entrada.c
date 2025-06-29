@@ -86,7 +86,8 @@ void InserePalavraIndice(const char *p, int idDoc) { // teria que passar a patri
     }
     if (total_p < 1000) { // adiciona palavra nova
         strcpy(v[total_p].nome, p);
-        IniciaPalavra(&v[total_p]);
+        IniciaPalavrapat(&v[total_p]);
+        IniciaPalavrahash(&v[total_p]);
         insereOuAtuOcorrPat(v[total_p].ocorrenciapat, idDoc);
         insereOuAtuOcorrHash(v[total_p].ocorrenciaHash, idDoc);
         total_p++;
@@ -110,9 +111,8 @@ void token_palavras(PalavraInd *pal)
     pal->nome[j] = '\0';
 }
 
-void ler_pocs(ListaArquivos *lista, TipoLista* Tabela, int M, TipoPesos p)
+void ler_pocs(ListaArquivos *lista, TipoLista* Tabela, int M, TipoPesos p,TipoArvore*a)
 {
-    TipoArvore a = NULL;
     int i;
     for(int i=0; i<lista->qtd_arq; i++)
     {
@@ -143,7 +143,7 @@ void ler_pocs(ListaArquivos *lista, TipoLista* Tabela, int M, TipoPesos p)
             {
                 InserePalavraIndice(p_temp.nome, idDoc); 
                 InsereHash(p_temp.nome, idDoc, p, Tabela, M);
-                a = Insere(p_temp.nome, &a,idDoc);
+                *a = Insere(p_temp.nome, a,idDoc);
                 
 
             
@@ -161,11 +161,10 @@ void ler_pocs(ListaArquivos *lista, TipoLista* Tabela, int M, TipoPesos p)
         free(tabela_ni);
         fclose(arq);
     }
-    ImprimirEmOrdem_Patricia(a);
 }
 
 void ImprimeIndiceInvertidopat() {
-    printf("\n--- Conteudo do Indice Invertido (vetor) ---\n");
+    printf("\n--- Conteudo do Indice Invertido (patricia) ---\n");
     if (total_p == 0) {
         printf("Indice invertido vazio.\n");
         return;

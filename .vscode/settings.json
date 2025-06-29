@@ -4,6 +4,7 @@
         "hash.h": "c",
         "entrada.h": "c",
         "patricia.h": "c",
-        "listaocorrencia_hash.h": "c"
+        "listaocorrencia_hash.h": "c",
+        "math.h": "c"
     }
 }

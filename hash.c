@@ -6,6 +6,7 @@
 #include <math.h>
 
 #include "hash.h"
+#include "entrada.h"
 
 static int total_comp_insercaohash = 0;
 
@@ -94,7 +95,7 @@ void InsereHash(const char *palavra, int idDoc, TipoPesos p, TipoLista* T, int M
 
   if (Posicao != NULL)
   {
-    insereOuAtualizaOcorrencia(Posicao->Item.Ocorrencia, idDoc);
+    insereOuAtuOcorrHash(Posicao->Item.Ocorrencia, idDoc);
   }
   else
   { // Palavra nova, precisa ser inserida
@@ -102,9 +103,9 @@ void InsereHash(const char *palavra, int idDoc, TipoPesos p, TipoLista* T, int M
     strcpy(novoItem.palavra, palavra);
     // Aloca e inicializa a lista de ocorrências para a nova palavra
     novoItem.Ocorrencia = (ListaOcorrenciasHash *)malloc(sizeof(ListaOcorrenciasHash));
-    FLOVazia(novoItem.Ocorrencia);
+    FLOVaziaHash(novoItem.Ocorrencia);
     // Insere a primeira ocorrência (id do documento)
-    insereOuAtualizaOcorrencia(novoItem.Ocorrencia, idDoc);
+    insereOuAtuOcorrHash(novoItem.Ocorrencia, idDoc);
     // Insere o novo item (palavra + lista de ocorrências) na hash
     InsHash(novoItem, &T[h(novoItem.palavra, p, M)]);
   }
@@ -188,7 +189,7 @@ void ImprimeOrdenadohash(TipoLista* Tabela, int M)
       OcorrenciaHash *atual = todosOsItens[i].Ocorrencia->Primeiro;
       while (atual != NULL)
       {
-        printf("<%d, %d> ", atual->item.id, atual->item.qtde);
+        printf("<%d, %d> ", atual->item.qtde, atual->item.id);
         atual = atual->prox;
       }
     }

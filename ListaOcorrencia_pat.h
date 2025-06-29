@@ -1,7 +1,6 @@
 #ifndef LISTAOCORRENCIA_PAT_H
 #define LISTAOCORRENCIA_PAT_H
 
-#include "patricia.h"
 
 typedef struct ItemPal_pat
 {

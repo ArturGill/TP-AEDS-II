@@ -4,7 +4,6 @@
 
 #include "entrada.h"
 
-
 int main() {
     TipoPesos p_temp;
     GeraPesos(p_temp);
@@ -23,10 +22,8 @@ int main() {
     TipoPesos p_principal;
     GeraPesos(p_principal);
 
-    ler_pocs(&entrada, Tabela_h, M, p_principal);
-    ImprimirTotalCompInsercaohash();
-    Imprime(Tabela_h, M);
-    ImprimeIndiceInvertido();
+    ler_pocs(&entrada, Tabela_h, M, p_principal,&a);
+    
     ImprimeOrdenadohash(Tabela_h, M);
     
     int op;
@@ -54,13 +51,14 @@ int main() {
                 break;
 
             case 2:
-                ler_pocs(&entrada, Tabela_h, M, p_principal);
+                ler_pocs(&entrada, Tabela_h, M, p_principal,&a);
                 break;
 
             case 3:
                 printf("Indice Invertido (Hash - ordenado):\n");
                 ImprimeOrdenadohash(Tabela_h, M);
-                //ImprimeOrdenPatricia()
+                printf("Indice Invertido (Patricia- ordenado):\n");
+                ImprimirEmOrdem_Patricia(a);
                 break;
 
             case 4:

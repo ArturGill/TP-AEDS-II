@@ -40,8 +40,8 @@ TipoArvore CriaNoExt(string k,int id_doc) {
   p->nt = Externo;
   p->NO.Chaveext.chave = (char*)malloc(strlen(k) + 1);
   strcpy(p->NO.Chaveext.chave, k);
-  FLOVazia(&p->NO.Chaveext.ocorrencia);
-  insereOuAtualizaOcorrencia(&p->NO.Chaveext.ocorrencia, id_doc);
+  FLOVaziaPat(&p->NO.Chaveext.ocorrencia);
+  insereOuAtuOcorrPat(&p->NO.Chaveext.ocorrencia, id_doc);
   return p;
 }
 
@@ -99,7 +99,7 @@ TipoArvore Insere(string k, TipoArvore *t,int id_doc) {
 
   if (strcmp(k, p->NO.Chaveext.chave) == 0) {
     printf("Erro: chave \"%s\" ja esta na arvore\n", k);
-    insereOuAtualizaOcorrencia(&(*t)->NO.Chaveext.ocorrencia,id_doc);
+    insereOuAtuOcorrPat(&p->NO.Chaveext.ocorrencia,id_doc);
     return *t;
   }
 
@@ -122,9 +122,17 @@ void DestruirArvore(TipoArvore a) {
   }
 }
 void ImprimirEmOrdem_Patricia(TipoArvore a) {
+
   if (a == NULL) return;
+
   if (EExterno(a)) {
-    printf("%s\n", a->NO.Chaveext.chave);
+    printf("%s -> ", a->NO.Chaveext.chave);
+    Ocorrencia_pat *atual = a->NO.Chaveext.ocorrencia.Primeiro;
+    while (atual != NULL) {
+        printf("<%d, %d> ",atual->item.qtde, atual->item.id );
+        atual = atual->prox;
+    }
+    printf("\n"); 
   } else {
     ImprimirEmOrdem_Patricia(a->NO.NInterno.Esq);
     ImprimirEmOrdem_Patricia(a->NO.NInterno.Dir);
