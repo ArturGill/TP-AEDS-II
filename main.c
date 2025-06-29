@@ -1,23 +1,36 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "entrada.h"
 #include "hash.h"
 #include "patricia.h"
 
 int main() {
-    int op;
-    Inicializahash(Tabela);
-    GeraPesos(p);
+    TipoPesos p_temp;
+    GeraPesos(p_temp);
     TipoArvore a = NULL;
     ListaArquivos entrada;
     entrada = leitura_arq("entrada.txt");
-    ler_pocs(&entrada);
-    ImprimirTotalCompInsercao();
-    Imprime(Tabela);
+
+    int l = contar_palavras_unicas(&entrada, p_temp);
+    int M = achar_primo_inferior(l);
+    TipoLista* Tabela_h = (TipoLista*) malloc(M * sizeof(TipoLista));
+    if(Tabela_h == NULL) {
+        printf("Falha critica de alocacao de memoria!\n");
+        return 1;
+    }
+    Inicializahash(Tabela_h, M);
+    TipoPesos p_principal;
+    GeraPesos(p_principal);
+
+    ler_pocs(&entrada, Tabela_h, M, p_principal);
+    ImprimirTotalCompInsercaohash();
+    Imprime(Tabela_h, M);
     ImprimeIndiceInvertido();
-    ImprimeOrdenadohash(Tabela);
+    ImprimeOrdenadohash(Tabela_h, M);
     
+    int op;
     char termo_busca[200];
   
         do {
@@ -42,12 +55,12 @@ int main() {
                 break;
 
             case 2:
-                ler_pocs(&entrada);
+                ler_pocs(&entrada, Tabela_h, M, p_principal);
                 break;
 
             case 3:
                 printf("Indice Invertido (Hash - ordenado):\n");
-                ImprimeOrdenadohash(Tabela);
+                ImprimeOrdenadohash(Tabela_h, M);
                 //ImprimeOrdenPatricia()
                 break;
 
@@ -55,7 +68,7 @@ int main() {
                 printf("Digite os termos para a busca: ");
                 if (fgets(termo_busca, sizeof(termo_busca), stdin)) {
                     termo_busca[strcspn(termo_busca, "\n")] = '\0';  // remove o '\n'
-                    buscar_por_relevancia_hash(termo_busca, &entrada, Tabela, p);
+                    buscar_por_relevancia_hash(termo_busca, &entrada, Tabela_h, M, p_principal);
                 }
                 break;
             case 5:
