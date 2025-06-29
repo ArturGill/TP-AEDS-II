@@ -12,4 +12,3 @@ $(TARGET): $(OBJ)
 
 clean:
 	del /Q $(OBJ) $(TARGET)
-

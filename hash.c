@@ -6,7 +6,6 @@
 #include <math.h>
 
 #include "hash.h"
-#include "entrada.h"
 
 TipoDicionario Tabela;
 TipoPesos p;
@@ -94,7 +93,7 @@ void InsereHash(const char *palavra, int idDoc, TipoPesos p, TipoDicionario T)
     TipoItem novoItem;
     strcpy(novoItem.palavra, palavra);
     // Aloca e inicializa a lista de ocorrências para a nova palavra
-    novoItem.Ocorrencia = (ListaOcorrencias *)malloc(sizeof(ListaOcorrencias));
+    novoItem.Ocorrencia = (ListaOcorrenciasHash *)malloc(sizeof(ListaOcorrenciasHash));
     FLOVazia(novoItem.Ocorrencia);
     // Insere a primeira ocorrência (id do documento)
     insereOuAtualizaOcorrencia(novoItem.Ocorrencia, idDoc);
@@ -183,7 +182,7 @@ void ImprimeOrdenadohash(TipoDicionario Tabela)
     printf("%s -> ", todosOsItens[i].palavra);
     if (todosOsItens[i].Ocorrencia != NULL)
     {
-      Ocorrencia *atual = todosOsItens[i].Ocorrencia->Primeiro;
+      OcorrenciaHash *atual = todosOsItens[i].Ocorrencia->Primeiro;
       while (atual != NULL)
       {
         printf("<%d, %d> ", atual->item.id, atual->item.qtde);

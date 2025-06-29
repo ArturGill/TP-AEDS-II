@@ -2,8 +2,7 @@
 #include <string.h>
 
 #include "entrada.h"
-#include "hash.h"
-#include "patricia.h"
+
 
 int main() {
     int op;

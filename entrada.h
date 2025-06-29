@@ -1,8 +1,8 @@
 #ifndef ENTRADA_H
 #define ENTRADA_H
 
-#include "ListaOcorrencia.h"
 #include "hash.h"
+#include "patricia.h"
 
 typedef struct ListaArquivos 
 {
@@ -14,7 +14,8 @@ typedef struct ListaArquivos
 typedef struct 
 {
     char nome[100];
-    ListaOcorrencias *ocorrencia;
+    ListaOcorrencias_pat *ocorrenciapat;
+    ListaOcorrenciasHash *ocorrenciaHash;
 }PalavraInd;
 
 PalavraInd v[1000];

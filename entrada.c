@@ -3,16 +3,21 @@
 #include <string.h>
 #include <ctype.h>
 #include <string.h>
-#include "patricia.h"
+
 #include "entrada.h"
 
 PalavraInd v[1000];
 int total_p = 0;
 
-void IniciaPalavra(PalavraInd *p)
+void IniciaPalavrapat(PalavraInd *p)
 {
-    p->ocorrencia = (ListaOcorrencias*)malloc(sizeof(ListaOcorrencias));
-    FLOVazia(p->ocorrencia);
+    p->ocorrenciapat = (ListaOcorrencias_pat*)malloc(sizeof(ListaOcorrencias_pat));
+    FLOVaziaPat(p->ocorrenciapat);
+}
+void IniciaPalavrahash(PalavraInd *p)
+{
+    p->ocorrenciaHash = (ListaOcorrenciasHash*)malloc(sizeof(ListaOcorrenciasHash));
+    FLOVaziaHash(p->ocorrenciaHash);
 }
 
 ListaArquivos leitura_arq(char *arq)
@@ -59,14 +64,16 @@ void InserePalavraIndice(const char *p, int idDoc) { // teria que passar a patri
     int i;
     for (i = 0; i < total_p; i++) {
         if (strcmp(v[i].nome, p) == 0) { // Palavra já existe no índice geral 
-            insereOuAtualizaOcorrencia(v[i].ocorrencia, idDoc);
+            insereOuAtuOcorrPat(v[i].ocorrenciapat, idDoc);
+            insereOuAtuOcorrHash(v[i].ocorrenciaHash, idDoc);
             return; 
         }
     }
     if (total_p < 1000) { // adiciona palavra nova
         strcpy(v[total_p].nome, p);
         IniciaPalavra(&v[total_p]);
-        insereOuAtualizaOcorrencia(v[total_p].ocorrencia, idDoc);
+        insereOuAtuOcorrPat(v[total_p].ocorrenciapat, idDoc);
+        insereOuAtuOcorrHash(v[total_p].ocorrenciaHash, idDoc);
         total_p++;
     }
 }
@@ -142,7 +149,7 @@ void ler_pocs(ListaArquivos *lista)
     ImprimirEmOrdem_Patricia(a);
 }
 
-void ImprimeIndiceInvertido() {
+void ImprimeIndiceInvertidopat() {
     printf("\n--- Conteudo do Indice Invertido (vetor) ---\n");
     if (total_p == 0) {
         printf("Indice invertido vazio.\n");
@@ -152,8 +159,33 @@ void ImprimeIndiceInvertido() {
     for (int i = 0; i < total_p; i++) {
         printf("%s -> ", v[i].nome);
 
-        if (v[i].ocorrencia != NULL) {
-            Ocorrencia *atual = v[i].ocorrencia->Primeiro;
+        if (v[i].ocorrenciapat != NULL) {
+            Ocorrencia_pat *atual = v[i].ocorrenciapat->Primeiro;
+            // Percorre a lista encadeada de ocorrências para a palavra atual
+            while (atual != NULL) {
+                printf("<%d, %d> ", atual->item.id, atual->item.qtde);
+                atual = atual->prox;
+            }
+        } 
+        else {
+            printf("Nenhuma ocorrencia (erro logico ou palavra ainda sem doc)");
+        }
+        printf("\n"); // Nova linha para a próxima palavra
+    }
+    printf("----------------------------------\n");
+}
+void ImprimeIndiceInvertidoHash() {
+    printf("\n--- Conteudo do Indice Invertido (vetor) ---\n");
+    if (total_p == 0) {
+        printf("Indice invertido vazio.\n");
+        return;
+    }
+    // Percorre o vetor 'v' 
+    for (int i = 0; i < total_p; i++) {
+        printf("%s -> ", v[i].nome);
+
+        if (v[i].ocorrenciaHash != NULL) {
+            OcorrenciaHash *atual = v[i].ocorrenciaHash;
             // Percorre a lista encadeada de ocorrências para a palavra atual
             while (atual != NULL) {
                 printf("<%d, %d> ", atual->item.id, atual->item.qtde);

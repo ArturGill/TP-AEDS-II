@@ -3,6 +3,7 @@
 #include <string.h>
 #include <sys/time.h>
 #include "patricia.h" 
+#include "patricia.h"
 
 
 TipoDib Bit(TipoIndexAmp i, string k) {
@@ -20,6 +21,7 @@ TipoDib Bit(TipoIndexAmp i, string k) {
 
   return (c & (1 << (7 - bit_index))) != 0;
 }
+
 short EExterno(TipoArvore p) {
   return (p->nt == Externo);
 }
@@ -33,12 +35,13 @@ TipoArvore CriaNoInt(int i, TipoArvore *Esq, TipoArvore *Dir) {
   return p;
 }
 
-TipoArvore CriaNoExt(string k) {
+TipoArvore CriaNoExt(string k,int id_doc) {
   TipoArvore p = (TipoArvore)malloc(sizeof(TipoPatNo));
-  FLOVazia(&(p)->NO.Chaveext.ocorrencias);
   p->nt = Externo;
   p->NO.Chaveext.chave = (char*)malloc(strlen(k) + 1);
   strcpy(p->NO.Chaveext.chave, k);
+  FLOVazia(&p->NO.Chaveext.ocorrencia);
+  insereOuAtualizaOcorrencia(&p->NO.Chaveext.ocorrencia, id_doc);
   return p;
 }
 
@@ -66,7 +69,7 @@ void Pesquisa(string k, TipoArvore t) {
 TipoArvore InsereEntre(string k, TipoArvore *t, int i,int id_doc) {
   TipoArvore p;
   if (EExterno(*t) || i < (*t)->NO.NInterno.Index) {
-    p = CriaNoExt(k);
+    p = CriaNoExt(k,id_doc);
     if (Bit(i, k))
       return CriaNoInt(i, t, &p);
     else
@@ -82,8 +85,8 @@ TipoArvore InsereEntre(string k, TipoArvore *t, int i,int id_doc) {
 
 TipoArvore Insere(string k, TipoArvore *t,int id_doc) {
     
-  if (*t == NULL) return CriaNoExt(k);
-
+  if (*t == NULL) return CriaNoExt(k,id_doc);
+  
   TipoArvore p = *t;
   while (!EExterno(p)) {
     if (Bit(p->NO.NInterno.Index, k)){
@@ -95,15 +98,15 @@ TipoArvore Insere(string k, TipoArvore *t,int id_doc) {
   }
 
   if (strcmp(k, p->NO.Chaveext.chave) == 0) {
-    insereOuAtualizaOcorrencia(&p->NO.Chaveext.ocorrencias,id_doc);
     printf("Erro: chave \"%s\" ja esta na arvore\n", k);
+    insereOuAtualizaOcorrencia(&(*t)->NO.Chaveext.ocorrencia,id_doc);
     return *t;
   }
 
   int i = 1;
- while ((Bit(i, k) == Bit(i, p->NO.Chaveext.chave))) {
+  while ((Bit(i, k) == Bit(i, p->NO.Chaveext.chave))) {  
     i++;
-}
+  }
 
   return InsereEntre(k, t, i,id_doc);
 }

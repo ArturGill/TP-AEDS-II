@@ -1,7 +1,7 @@
-#ifndef TABELAHASH_H
-#define TABELAHASH_H
+#ifndef HASH_H
+#define HASH_H
 
-#include "ListaOcorrencia.h"
+#include "ListaOcorrencia_Hash.h"
 
 #define M 7
 #define N 100      
@@ -13,7 +13,7 @@ typedef unsigned TipoPesos[N][TAMALFABETO];
 
 typedef struct TipoItem {
   Palavras palavra;
-  ListaOcorrencias *Ocorrencia;
+  ListaOcorrenciasHash *Ocorrencia;
 } TipoItem;
 
 typedef unsigned int TipoIndice;
