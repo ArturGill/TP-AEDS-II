@@ -43,22 +43,37 @@ ListaArquivos leitura_arq(char *arq)
     return (lista);
 }
 
-// void Insere(PalavraInd *pal)
-// {
-//     int i;
-//     for (i = 0; i < total_p; i++)
-//     {
-//         if (strcmp(v[i].nome, pal->nome) == 0 && v[i].ocorrencia->Primeiro->item.id == pal->ocorrencia->Primeiro->item.id)
-//         {
-//             v[i].ocorrencia->Primeiro->item.qtde++;
-//             return;
-//         }
-//     }
-//     strcpy(v[total_p].nome, pal->nome);
-//     v[total_p].ocorrencia->Primeiro->item.id = pal->ocorrencia->Primeiro->item.id;
-//     v[total_p].ocorrencia->Primeiro->item.qtde = 1;
-//     total_p++;
-// }
+int contar_palavras_unicas(ListaArquivos *lista, TipoPesos p_temp) {
+    const int M_TEMP = 10007; // Um primo grande para a tabela temporária
+    TipoLista* tabela_temp = (TipoLista*) malloc(M_TEMP * sizeof(TipoLista));
+    Inicializahash(tabela_temp, M_TEMP);
+    int n = 0; // Contador de palavras únicas
+
+    for (int i = 0; i < lista->qtd_arq; i++) {
+        FILE *arq = fopen(lista->nomes[i], "r");
+        if (!arq) continue;
+
+        PalavraInd p_temp_struct;
+        while (fscanf(arq, "%s", p_temp_struct.nome) == 1) {
+            token_palavras(&p_temp_struct);
+            if (strlen(p_temp_struct.nome) > 0) {
+                TipoApontador resultado = NULL;
+                // Pesquisa na tabela temporária para ver se a palavra é nova
+                PesquisaHash(p_temp_struct.nome, p_temp, tabela_temp, M_TEMP, &resultado);
+                if (resultado == NULL) {
+                    n++; // Se não encontrou, é uma palavra nova. Incrementa o contador.
+                    TipoItem item_fantasma;
+                    strcpy(item_fantasma.palavra, p_temp_struct.nome);
+                    item_fantasma.Ocorrencia = NULL; // Não precisamos guardar ocorrências aqui
+                    InsHash(item_fantasma, &tabela_temp[h(item_fantasma.palavra, p_temp, M_TEMP)]);
+                }
+            }
+        }
+        fclose(arq);
+    }
+    free(tabela_temp); 
+    return n;
+}
 
 void InserePalavraIndice(const char *p, int idDoc) { // teria que passar a patrica e uma hash para a insercao final
     int i;
@@ -95,10 +110,15 @@ void token_palavras(PalavraInd *pal)
     pal->nome[j] = '\0';
 }
 
-void ler_pocs(ListaArquivos *lista)
+void ler_pocs(ListaArquivos *lista, TipoLista* Tabela, int M, TipoPesos p)
 {
     TipoArvore a = NULL;
     int i;
+    for(int i=0; i<lista->qtd_arq; i++)
+    {
+        lista->n_i[i] = 0;
+    }
+
     for (i = 0; i < lista->qtd_arq; i++)
     {
         FILE *arq = fopen(lista->nomes[i], "r");
@@ -107,12 +127,13 @@ void ler_pocs(ListaArquivos *lista)
             printf("Erro ao abrir o arquivo: %s\n", lista->nomes[i]);
             continue;
         }
-        char (*palavras_unicas)[100] = malloc(10000 * sizeof(char[100]));
-        if (palavras_unicas == NULL) {
-            printf("Falha ao alocar memoria!\n");
-            continue;
-        }
-        int tot_unicas=0;
+        const int M_TEMP_NI = 1009; // Tabela temporária para contar n_i
+        TipoLista* tabela_ni = (TipoLista*) malloc(M_TEMP_NI * sizeof(TipoLista));
+        Inicializahash(tabela_ni, M_TEMP_NI);
+        TipoPesos p_ni;
+        GeraPesos(p_ni);
+
+        
         PalavraInd p_temp;
         int idDoc = i + 1;
         while (fscanf(arq, "%s", p_temp.nome) == 1)
@@ -121,30 +142,24 @@ void ler_pocs(ListaArquivos *lista)
             if(strlen(p_temp.nome) > 0)
             {
                 InserePalavraIndice(p_temp.nome, idDoc); 
-                InsereHash(p_temp.nome, idDoc, p, Tabela);
+                InsereHash(p_temp.nome, idDoc, p, Tabela, M);
                 a = Insere(p_temp.nome, &a,idDoc);
                 
 
             
-                int encontrada = 0;
-                for(int k = 0; k < tot_unicas; k++)
-                {
-                    if(strcmp(palavras_unicas[k], p_temp.nome) == 0)
-                    {
-                        encontrada = 1;
-                        break;
-                    }
+                TipoApontador res_ni = NULL;
+                PesquisaHash(p_temp.nome, p_ni, tabela_ni, M_TEMP_NI, &res_ni);
+                if(res_ni == NULL){
+                    lista->n_i[i]++;
+                    TipoItem item_ni;
+                    strcpy(item_ni.palavra, p_temp.nome);
+                    item_ni.Ocorrencia = NULL;
+                    InsHash(item_ni, &tabela_ni[h(item_ni.palavra, p_ni, M_TEMP_NI)]);
                 }
-                if(!encontrada && tot_unicas < 10000){
-                    strcpy(palavras_unicas[tot_unicas],p_temp.nome);
-                    tot_unicas++;
-                }
-            }            
+            }
         }
-        
+        free(tabela_ni);
         fclose(arq);
-        lista->n_i[i] = tot_unicas;
-        free(palavras_unicas);
     }
     ImprimirEmOrdem_Patricia(a);
 }
@@ -198,4 +213,26 @@ void ImprimeIndiceInvertidoHash() {
         printf("\n"); // Nova linha para a próxima palavra
     }
     printf("----------------------------------\n");
+}
+
+int eh_primo(int n) {
+    if (n <= 1) return 0;
+    if (n <= 3) return 1;
+    if (n % 2 == 0 || n % 3 == 0) return 0;
+    for (int i = 5; i * i <= n; i = i + 6) {
+        if (n % i == 0 || n % (i + 2) == 0)
+            return 0;
+    }
+    return 1;
+}
+
+// Função para encontrar o maior primo menor ou igual a n
+int achar_primo_inferior(int n) {
+    if (n <= 1) return 2;
+    for (int i = n; i > 1; i--) {
+        if (eh_primo(i)) {
+            return i;
+        }
+    }
+    return 2;
 }

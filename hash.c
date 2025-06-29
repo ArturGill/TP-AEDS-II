@@ -7,9 +7,11 @@
 
 #include "hash.h"
 
-TipoDicionario Tabela;
+static int total_comp_insercaohash = 0;
+
 TipoPesos p;
 TipoApontador i;
+
 
 void FLVaziahash(TipoLista *Lista)
 {
@@ -41,7 +43,7 @@ void GeraPesos(TipoPesos p)
       p[i][j] = 1 + (int)(10000.0 * rand() / (RAND_MAX + 1.0));
 }
 
-TipoIndice h(Palavras palavra, TipoPesos p)
+TipoIndice h(Palavras palavra, TipoPesos p, int M)
 {
   int i;
   unsigned int Soma = 0;
@@ -51,39 +53,45 @@ TipoIndice h(Palavras palavra, TipoPesos p)
   return (Soma % M);
 }
 
-void Inicializahash(TipoDicionario T)
+void Inicializahash(TipoLista* Tabela, int M)
 {
   int i;
   for (i = 0; i < M; i++)
-    FLVaziahash(&T[i]);
+    FLVaziahash(&Tabela[i]);
 }
 
-TipoApontador PesquisaHash(Palavras Ch, TipoPesos p, TipoDicionario T)
+int PesquisaHash(Palavras Ch, TipoPesos p, TipoLista* T, int M, TipoApontador *Resultado)
 {
+  int comparacao = 0;
   TipoIndice i;
   TipoApontador Ap;
-  i = h(Ch, p);
+  i = h(Ch, p, M);
+  *Resultado = NULL;
   if (Vaziahash(T[i]))
   {
-    return NULL;
+    return comparacao;
   }
 
   Ap = T[i].Primeiro->Prox;
   while (Ap != NULL)
   {
+    comparacao ++;
     if (strcmp(Ch, Ap->Item.palavra) == 0)
     {
-      return Ap;
+      *Resultado = Ap;
+      return comparacao;
     }
     Ap = Ap->Prox;
   }
-  return NULL;
+  return comparacao;
 }
 
-void InsereHash(const char *palavra, int idDoc, TipoPesos p, TipoDicionario T)
+void InsereHash(const char *palavra, int idDoc, TipoPesos p, TipoLista* T, int M)
 {
-  TipoApontador Posicao;
-  Posicao = PesquisaHash((char *)palavra, p, T);
+  TipoApontador Posicao = NULL;
+  int comparacao = PesquisaHash((char*)palavra, p, T, M, &Posicao);
+  total_comp_insercaohash += comparacao;
+
   if (Posicao != NULL)
   {
     insereOuAtualizaOcorrencia(Posicao->Item.Ocorrencia, idDoc);
@@ -98,9 +106,10 @@ void InsereHash(const char *palavra, int idDoc, TipoPesos p, TipoDicionario T)
     // Insere a primeira ocorrência (id do documento)
     insereOuAtualizaOcorrencia(novoItem.Ocorrencia, idDoc);
     // Insere o novo item (palavra + lista de ocorrências) na hash
-    InsHash(novoItem, &T[h(novoItem.palavra, p)]);
+    InsHash(novoItem, &T[h(novoItem.palavra, p, M)]);
   }
 }
+
 
 void Imp(TipoLista Lista)
 {
@@ -113,7 +122,7 @@ void Imp(TipoLista Lista)
   }
 }
 
-void Imprime(TipoDicionario Tabela)
+void Imprime( TipoLista* Tabela, int M)
 {
   int i;
   for (i = 0; i < M; i++)
@@ -132,7 +141,7 @@ int Compara(const void *a, const void *b)
   return strncmp(itemA->palavra, itemB->palavra, N);
 }
 
-void ImprimeOrdenadohash(TipoDicionario Tabela)
+void ImprimeOrdenadohash(TipoLista* Tabela, int M)
 {
   int i;
   TipoApontador Aux;
@@ -140,15 +149,12 @@ void ImprimeOrdenadohash(TipoDicionario Tabela)
 
   for (i = 0; i < M; i++)
   {
-    if (!Vaziahash(Tabela[i]))
-    {
       Aux = Tabela[i].Primeiro->Prox;
       while (Aux != NULL)
       {
         totalDeItens++;
         Aux = Aux->Prox;
       }
-    }
   }
   if (totalDeItens == 0)
   {
@@ -164,8 +170,6 @@ void ImprimeOrdenadohash(TipoDicionario Tabela)
   int k = 0;
   for (i = 0; i < M; i++)
   {
-    if (!Vaziahash(Tabela[i]))
-    {
       Aux = Tabela[i].Primeiro->Prox;
       while (Aux != NULL)
       {
@@ -173,7 +177,6 @@ void ImprimeOrdenadohash(TipoDicionario Tabela)
         k++;
         Aux = Aux->Prox;
       }
-    }
   }
   qsort(todosOsItens, totalDeItens, sizeof(TipoItem), Compara);
   printf("--- Indice Invertido (Hash) ---\n");
@@ -207,7 +210,7 @@ int comparar_resultados(const void *a, const void *b)
   return 0;
 }
 
-void buscar_por_relevancia_hash(const char *consulta, struct ListaArquivos *docs, TipoDicionario T, TipoPesos p)
+void buscar_por_relevancia_hash(const char *consulta, struct ListaArquivos *docs, TipoLista* T, int M, TipoPesos p)
 {
   // 1. Processar os termos da consulta
   char copia_consulta[200];
@@ -243,7 +246,7 @@ void buscar_por_relevancia_hash(const char *consulta, struct ListaArquivos *docs
   int V = docs->qtd_arq;
   ResultadoBusca resultados[V];
   int resultados_count = 0;
-
+  int total_comp_busca_hash = 0;
   // 2. Calcular a relevância r(i) para cada documento i
   for (int i = 0; i < V; i++)
   {
@@ -258,9 +261,10 @@ void buscar_por_relevancia_hash(const char *consulta, struct ListaArquivos *docs
     for (int j = 0; j < qtd_termos_consulta; j++)
     {
       const char *termo_j = termos_consulta[j];
+      TipoApontador no_palavra = NULL;
 
       // Pesquisa o termo na hash
-      TipoApontador no_palavra = PesquisaHash((char *)termo_j, p, T);
+      PesquisaHash((char *)termo_j, p, T, M, &no_palavra);
 
       if (no_palavra != NULL)
       {
@@ -272,8 +276,8 @@ void buscar_por_relevancia_hash(const char *consulta, struct ListaArquivos *docs
           // d_j = número de documentos que contêm o termo j
           int d_j = obter_dj(no_palavra->Item.Ocorrencia);
 
-          // w_ji = f_ji * log2(N / d_j)
-          double w_ji = (double)f_ji * log2((double)N / d_j);
+          // w_ji = f_ji * log2(V / d_j)
+          double w_ji = (double)f_ji * log2((double)V / d_j);
           soma_pesos_w += w_ji;
         }
       }
@@ -288,6 +292,13 @@ void buscar_por_relevancia_hash(const char *consulta, struct ListaArquivos *docs
       resultados_count++;
     }
   }
+  for (int j = 0; j < qtd_termos_consulta; j++) {
+      const char *termo_j = termos_consulta[j];
+      TipoApontador temp = NULL;
+      int comp_termo = PesquisaHash((char*)termo_j, p, T, M, &temp);
+      total_comp_busca_hash += comp_termo;
+  }
+  printf("Total comparacoes para busca: %d\n", total_comp_busca_hash);
 
   // 3. Ordenar os resultados por relevância
   qsort(resultados, resultados_count, sizeof(ResultadoBusca), comparar_resultados);
@@ -303,4 +314,8 @@ void buscar_por_relevancia_hash(const char *consulta, struct ListaArquivos *docs
       printf("%d. %s \n", i + 1, resultados[i].nome_arquivo);
     }
   }
+}
+void ImprimirTotalCompInsercaohash()
+{
+  printf("Total de comparacoes em todas as insercoes: %d\n", total_comp_insercaohash);
 }

@@ -25,7 +25,9 @@ void IniciaPalavra (PalavraInd *p);
 ListaArquivos leitura_arq(char *arq);
 void InserePalavraIndice(const char *palavra_texto, int idDoc);
 void token_palavras(PalavraInd *pal);
-void ler_pocs(ListaArquivos *lista);
+void ler_pocs(ListaArquivos *lista, TipoLista* Tabela, int M, TipoPesos p);
 void ImprimeIndiceInvertido();
-
+int contar_palavras_unicas(ListaArquivos *lista, TipoPesos p_temp);
+int achar_primo_inferior(int n);
+int eh_primo(int n);
 #endif
