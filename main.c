@@ -13,7 +13,7 @@ int main() {
     ListaArquivos entrada;
     entrada = leitura_arq("entrada.txt");
     ler_pocs(&entrada);
-    
+    ImprimirTotalCompInsercao();
     Imprime(Tabela);
     ImprimeIndiceInvertido();
     ImprimeOrdenadohash(Tabela);

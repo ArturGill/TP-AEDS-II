@@ -4,7 +4,7 @@
 #include "ListaOcorrencia.h"
 
 #define M 7
-#define N 100      
+#define N 45     
 #define TAMALFABETO 256
 
 
@@ -48,12 +48,13 @@ void InsHash(TipoItem x, TipoLista *Lista);
 void GeraPesos(TipoPesos p);
 TipoIndice h(Palavras Chave, TipoPesos p);
 void Inicializahash(TipoDicionario T);
-TipoApontador PesquisaHash(Palavras Ch, TipoPesos p, TipoDicionario T);
+int PesquisaHash(Palavras Ch, TipoPesos p, TipoDicionario T, TipoApontador *Resultado);
 void InsereHash(const char *palavra, int idDoc, TipoPesos p, TipoDicionario T);
 void Imp(TipoLista Lista);
 void Imprime(TipoDicionario Tabela);
 int Compara (const void *a, const void *b);
 void ImprimeOrdenadohash(TipoDicionario Tabela);
 void buscar_por_relevancia_hash(const char* consulta, struct ListaArquivos *docs, TipoDicionario T, TipoPesos p);
+void ImprimirTotalCompInsercao();
 
 #endif
