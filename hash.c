@@ -110,10 +110,7 @@ void InsereHash(const char *palavra, int idDoc, TipoPesos p, TipoLista* T, int M
     InsHash(novoItem, &T[h(novoItem.palavra, p, M)]);
   }
 }
-void ImprimirTotalCompInsercao()
-{
-  printf("Total comparacoes na insercao da hash: %d\n", total_comp_insercaohash);
-}
+
 
 void Imp(TipoLista Lista)
 {
