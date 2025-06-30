@@ -199,7 +199,7 @@ void ImprimeOrdenadohash(TipoLista* Tabela, int M)
   free(todosOsItens);
 }
 
-// Função de comparação para o qsort, para ordenar os resultados por relevancia (decrescente)
+
 int comparar_resultados(const void *a, const void *b)
 {
   ResultadoBusca *resA = (ResultadoBusca *)a;

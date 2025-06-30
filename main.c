@@ -76,6 +76,7 @@ int main() {
                     termo_busca[strcspn(termo_busca, "\n")] = '\0';
                     buscar_por_relevancia_patricia(termo_busca, &entrada, a);
                 }
+                break;
 
             case 0:
                 printf("Programa encerrado\n");
