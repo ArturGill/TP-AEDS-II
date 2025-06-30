@@ -201,7 +201,7 @@ void ImprimeIndiceInvertidoHash() {
         printf("%s -> ", v[i].nome);
 
         if (v[i].ocorrenciaHash != NULL) {
-            OcorrenciaHash *atual = v[i].ocorrenciaHash;
+            OcorrenciaHash *atual = v[i].ocorrenciaHash->Primeiro;
             // Percorre a lista encadeada de ocorrências para a palavra atual
             while (atual != NULL) {
                 printf("<%d, %d> ", atual->item.id, atual->item.qtde);
