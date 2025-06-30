@@ -25,9 +25,7 @@ int main() {
     TipoPesos p_principal;
     GeraPesos(p_principal);
 
-    ler_pocs(&entrada, Tabela_h, M, p_principal,&a);
-    
-    ImprimeOrdenadohash(Tabela_h, M);
+
     
     int op;
     char termo_busca[200];
@@ -60,6 +58,7 @@ int main() {
             case 3:
                 printf("Indice Invertido (Hash - ordenado):\n");
                 ImprimeOrdenadohash(Tabela_h, M);
+                ImprimirTotalCompInsercaohash();
                 printf("Indice Invertido (Patricia- ordenado):\n");
                 ImprimirEmOrdem_Patricia(a);
                 break;

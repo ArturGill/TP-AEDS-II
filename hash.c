@@ -318,5 +318,5 @@ void buscar_por_relevancia_hash(const char* consulta, struct ListaArquivos *docs
 }
 void ImprimirTotalCompInsercaohash()
 {
-  printf("Total de comparacoes em todas as insercoes: %d\n", total_comp_insercaohash);
+  printf("Total de comparacoes em todas as insercoes hash: %d\n", total_comp_insercaohash);
 }
