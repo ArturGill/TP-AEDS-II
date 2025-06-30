@@ -24,10 +24,6 @@ int main() {
     Inicializahash(Tabela_h, M);
     TipoPesos p_principal;
     GeraPesos(p_principal);
-
-    ler_pocs(&entrada, Tabela_h, M, p_principal,&a);
-    
-    ImprimeOrdenadohash(Tabela_h, M);
     
     int op;
     char termo_busca[200];
@@ -77,6 +73,7 @@ int main() {
                     termo_busca[strcspn(termo_busca, "\n")] = '\0';
                     buscar_por_relevancia_patricia(termo_busca, &entrada, a);
                 }
+                break;
 
             case 0:
                 printf("Programa encerrado\n");
