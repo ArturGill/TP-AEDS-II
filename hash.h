@@ -2,6 +2,7 @@
 #define HASH_H
 
 #include "ListaOcorrencia_Hash.h"
+#include "entrada.h"
 
 
 #define N 45     

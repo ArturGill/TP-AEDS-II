@@ -1,9 +1,12 @@
 #ifndef ENTRADA_H
 #define ENTRADA_H
+#include "ListaOcorrencia_pat.h"
+#include "ListaOcorrencia_Hash.h"
 
-#include "hash.h"
-#include "patricia.h"
 
+typedef struct TipoPatNo* TipoArvore;
+typedef struct TipoLista TipoLista;
+typedef unsigned TipoPesos[45][256];
 typedef struct ListaArquivos 
 {
     int qtd_arq;

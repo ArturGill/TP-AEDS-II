@@ -3,6 +3,9 @@
 #include <stdlib.h>
 
 #include "entrada.h"
+#include "hash.h"
+#include "patricia.h"
+
 
 int main() {
     TipoPesos p_temp;
@@ -39,7 +42,7 @@ int main() {
         printf("0. Sair\n");
         printf("Opcao: ");
         scanf("%d", &op);
-        getchar();  // consome o '\n' deixado pelo scanf
+        getchar(); 
 
         switch (op)
         {
@@ -70,6 +73,10 @@ int main() {
                 break;
             case 5:
                 printf("Digite os termos para a busca: ");
+                if (fgets(termo_busca, sizeof(termo_busca), stdin)) {
+                    termo_busca[strcspn(termo_busca, "\n")] = '\0';
+                    buscar_por_relevancia_patricia(termo_busca, &entrada, a);
+                }
 
             case 0:
                 printf("Programa encerrado\n");

@@ -3,6 +3,7 @@
 
 #define tam_max 45
 #include "ListaOcorrencia_pat.h"
+#include "entrada.h"
 
 typedef char string[tam_max];
 typedef struct TipoChave{
@@ -28,6 +29,13 @@ typedef struct TipoPatNo {
   } NO;
 } TipoPatNo;
 
+typedef struct {
+    char nome_arquivo[100];
+    double relev;
+} ResultadoBuscapat;
+
+TipoArvore Pesquisa_no(string k, TipoArvore t);
+void buscar_por_relevancia_patricia(const char *consulta, ListaArquivos *docs, TipoArvore a);
 void ImprimirEmOrdem_Patricia(TipoArvore a);
 void DestruirArvore(TipoArvore a);
 TipoDib Bit(TipoIndexAmp i, char* k);
@@ -37,5 +45,6 @@ void Pesquisa(char* k, TipoArvore t);
 TipoArvore CriaNoExt(char* k,int id_doc);
 TipoArvore CriaNoInt(int i, TipoArvore *Esq,  TipoArvore *Dir);
 short EExterno(TipoArvore p);
+int comparar_resultadospat(const void *a, const void *b);
 
 #endif

@@ -5,6 +5,8 @@
 #include <string.h>
 
 #include "entrada.h"
+#include "hash.h"
+#include "patricia.h"
 
 PalavraInd v[1000];
 int total_p = 0;

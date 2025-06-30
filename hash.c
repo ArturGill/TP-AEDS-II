@@ -211,7 +211,7 @@ int comparar_resultados(const void *a, const void *b)
   return 0;
 }
 
-void buscar_por_relevancia_hash(const char *consulta, struct ListaArquivos *docs, TipoLista* T, int M, TipoPesos p)
+void buscar_por_relevancia_hash(const char* consulta, struct ListaArquivos *docs, TipoLista* T, int M, TipoPesos p)
 {
   // 1. Processar os termos da consulta
   char copia_consulta[200];
