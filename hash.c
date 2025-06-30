@@ -98,15 +98,12 @@ void InsereHash(const char *palavra, int idDoc, TipoPesos p, TipoLista* T, int M
     insereOuAtuOcorrHash(Posicao->Item.Ocorrencia, idDoc);
   }
   else
-  { // Palavra nova, precisa ser inserida
+  {
     TipoItem novoItem;
     strcpy(novoItem.palavra, palavra);
-    // Aloca e inicializa a lista de ocorrências para a nova palavra
     novoItem.Ocorrencia = (ListaOcorrenciasHash *)malloc(sizeof(ListaOcorrenciasHash));
     FLOVaziaHash(novoItem.Ocorrencia);
-    // Insere a primeira ocorrência (id do documento)
     insereOuAtuOcorrHash(novoItem.Ocorrencia, idDoc);
-    // Insere o novo item (palavra + lista de ocorrências) na hash
     InsHash(novoItem, &T[h(novoItem.palavra, p, M)]);
   }
 }
@@ -248,7 +245,7 @@ void buscar_por_relevancia_hash(const char* consulta, struct ListaArquivos *docs
   ResultadoBusca resultados[V];
   int resultados_count = 0;
   int total_comp_busca_hash = 0;
-  // 2. Calcular a relevância r(i) para cada documento i
+  
   for (int i = 0; i < V; i++)
   {
     double soma_pesos_w = 0.0;

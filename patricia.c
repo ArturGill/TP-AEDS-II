@@ -5,7 +5,7 @@
 #include <sys/time.h>
 #include "patricia.h" 
 
-
+static int total_comp_insercaopat = 0;
 
 
 TipoDib Bit(TipoIndexAmp i, string k) {
@@ -48,26 +48,6 @@ TipoArvore CriaNoExt(string k,int id_doc) {
 }
 
 
-void Pesquisa(string k, TipoArvore t) {
-  if (t == NULL) {
-    printf("Elemento nao encontrado\n");
-    return;
-  }
-  if (EExterno(t)) {
-    if (strcmp(k, t->NO.Chaveext.chave) == 0){
-      printf("Elemento encontrado\n");
-    }
-    else{
-      printf("Elemento nao encontrado\n");
-    }
-    return;
-  }
-  if (Bit(t->NO.NInterno.Index, k) == 0)
-    Pesquisa(k, t->NO.NInterno.Esq);
-  else
-    Pesquisa(k, t->NO.NInterno.Dir);
-}
-
 TipoArvore InsereEntre(string k, TipoArvore *t, int i,int id_doc) {
   TipoArvore p;
   if (EExterno(*t) || i < (*t)->NO.NInterno.Index) {
@@ -88,9 +68,10 @@ TipoArvore InsereEntre(string k, TipoArvore *t, int i,int id_doc) {
 TipoArvore Insere(string k, TipoArvore *t,int id_doc) {
     
   if (*t == NULL) return CriaNoExt(k,id_doc);
-  
+
   TipoArvore p = *t;
   while (!EExterno(p)) {
+    total_comp_insercaopat+=1;
     if (Bit(p->NO.NInterno.Index, k)){
       p = p->NO.NInterno.Dir;
     }
@@ -130,8 +111,8 @@ void ImprimirEmOrdem_Patricia(TipoArvore a) {
     printf("%s -> ", a->NO.Chaveext.chave);
     Ocorrencia_pat *atual = a->NO.Chaveext.ocorrencia.Primeiro;
     while (atual != NULL) {
-        printf("<%d, %d> ",atual->item.qtde, atual->item.id );
-        atual = atual->prox;
+      printf("<%d, %d> ",atual->item.qtde, atual->item.id );
+      atual = atual->prox;
     }
     printf("\n"); 
   } else {
@@ -139,11 +120,11 @@ void ImprimirEmOrdem_Patricia(TipoArvore a) {
     ImprimirEmOrdem_Patricia(a->NO.NInterno.Dir);
   }
 }
-TipoArvore Pesquisa_no(string k, TipoArvore t) {
+TipoArvore Pesquisa_no(string k, TipoArvore t,int* qunt_comp_busca) {
   if (t == NULL) {
     return NULL; 
   }
-
+  (*qunt_comp_busca)+=1;
   if (EExterno(t)) {
     if (strcmp(k, t->NO.Chaveext.chave) == 0) {
       return t; 
@@ -151,11 +132,10 @@ TipoArvore Pesquisa_no(string k, TipoArvore t) {
       return NULL; 
     }
   }
-
   if (Bit(t->NO.NInterno.Index, k) == 0) {
-    return Pesquisa_no(k, t->NO.NInterno.Esq);
+    return Pesquisa_no(k, t->NO.NInterno.Esq,qunt_comp_busca);
   } else {
-    return Pesquisa_no(k, t->NO.NInterno.Dir);
+    return Pesquisa_no(k, t->NO.NInterno.Dir,qunt_comp_busca);
   }
 }
 void buscar_por_relevancia_patricia(const char *consulta, ListaArquivos *docs, TipoArvore a) {
@@ -191,6 +171,7 @@ void buscar_por_relevancia_patricia(const char *consulta, ListaArquivos *docs, T
     int n = docs->qtd_arq;
     ResultadoBuscapat resultados[n];
     int resultados_count = 0;
+    int qunt_comp_pesquisa = 0;
 
     for (int i = 0; i < n; i++) {
         double soma_pesos_w = 0.0;
@@ -200,27 +181,27 @@ void buscar_por_relevancia_patricia(const char *consulta, ListaArquivos *docs, T
         if (n_i == 0) continue;
 
         for (int j = 0; j < qtd_termos_consulta; j++) {
-            const char *termo_j = termos_consulta[j];
+          const char *termo_j = termos_consulta[j];
             
-            TipoArvore no_palavra = Pesquisa_no((char*)termo_j, a);
+          TipoArvore no_palavra = Pesquisa_no((char*)termo_j, a,&qunt_comp_pesquisa);
 
-            if (no_palavra != NULL) {
-                int f_ji = obter_fjiPat(&no_palavra->NO.Chaveext.ocorrencia, doc_id);
+          if (no_palavra != NULL) {
+            int f_ji = obter_fjiPat(&no_palavra->NO.Chaveext.ocorrencia, doc_id);
 
-              if (f_ji > 0) {
-                int d_j = obter_djPat(&no_palavra->NO.Chaveext.ocorrencia);
-                if (d_j > 0) { 
-                  double w_ji = (double)f_ji * log2((double)n / d_j);
-                  soma_pesos_w += w_ji;
-                }
+            if (f_ji > 0) {
+              int d_j = obter_djPat(&no_palavra->NO.Chaveext.ocorrencia);
+              if (d_j > 0) { 
+                double w_ji = (double)f_ji * log2((double)n / d_j);
+                soma_pesos_w += w_ji;
               }
             }
+          }
         }
         if (soma_pesos_w > 0) {
-            double r_i = (1.0 / n_i) * soma_pesos_w;
-            strcpy(resultados[resultados_count].nome_arquivo, docs->nomes[i]);
-            resultados[resultados_count].relev = r_i;
-            resultados_count++;
+          double r_i = (1.0 / n_i) * soma_pesos_w;
+          strcpy(resultados[resultados_count].nome_arquivo, docs->nomes[i]);
+          resultados[resultados_count].relev = r_i;
+          resultados_count++;
         }
     }
     qsort(resultados, resultados_count, sizeof(ResultadoBuscapat), comparar_resultadospat);
@@ -231,6 +212,7 @@ void buscar_por_relevancia_patricia(const char *consulta, ListaArquivos *docs, T
         for (int i = 0; i < resultados_count; i++) {
             printf("%d. %s \n", i + 1, resultados[i].nome_arquivo);
         }
+        printf("Quantidade de comparacoes na pesquisa: %d",qunt_comp_pesquisa);
     }
 }
 int comparar_resultadospat(const void *a, const void *b){
@@ -241,4 +223,8 @@ int comparar_resultadospat(const void *a, const void *b){
   if (resA->relev > resB->relev)
     return -1;
   return 0;
+}
+
+void Imprime_quntd_comp_inserc_pat(){
+  printf("Total de comparacoes em todas as insercoes patricia: %d\n",total_comp_insercaopat);
 }

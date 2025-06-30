@@ -34,17 +34,16 @@ typedef struct {
     double relev;
 } ResultadoBuscapat;
 
-TipoArvore Pesquisa_no(string k, TipoArvore t);
+TipoArvore Pesquisa_no(string k, TipoArvore t,int* qunt_comp_busca);
 void buscar_por_relevancia_patricia(const char *consulta, ListaArquivos *docs, TipoArvore a);
 void ImprimirEmOrdem_Patricia(TipoArvore a);
 void DestruirArvore(TipoArvore a);
 TipoDib Bit(TipoIndexAmp i, char* k);
 TipoArvore Insere(char* k, TipoArvore *t,int id_doc);
 TipoArvore InsereEntre(char* k, TipoArvore *t, int i,int id_doc);
-void Pesquisa(char* k, TipoArvore t);
 TipoArvore CriaNoExt(char* k,int id_doc);
 TipoArvore CriaNoInt(int i, TipoArvore *Esq,  TipoArvore *Dir);
 short EExterno(TipoArvore p);
 int comparar_resultadospat(const void *a, const void *b);
-
+void Imprime_quntd_comp_inserc_pat();
 #endif

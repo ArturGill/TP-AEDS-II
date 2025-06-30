@@ -37,6 +37,7 @@ int main() {
         printf("3. Imprimir os indices invertidos\n");
         printf("4. Buscar termos (Hash)\n");
         printf("5. Buscar termos (Patricia)\n");
+        printf("6. Comparacoes insercao\n");
         printf("0. Sair\n");
         printf("Opcao: ");
         scanf("%d", &op);
@@ -77,7 +78,11 @@ int main() {
                     buscar_por_relevancia_patricia(termo_busca, &entrada, a);
                 }
                 break;
-
+            
+            case 6:
+                ImprimirTotalCompInsercaohash();
+                Imprime_quntd_comp_inserc_pat();
+                break;
             case 0:
                 printf("Programa encerrado\n");
                 break;
