@@ -1,0 +1,8 @@
+O algoritmo pode ser executado no terminal com comando “mingw32-make”, e então “.\app.exe” abrirá um menu de comandos no terminal:
+- Primeiro, aperte “1” e “enter” para receber os arquivos com os resumos dos POC’s.
+- Após isso, “2” para registrar as palavras de cada POC e construir os indices invertidos.
+
+- Para imprimir o indice invertido de cada palavra, “3”.
+- Para buscar os termos na hash, “4”, "enter", e digite o termo requerido.
+- Para buscar os termos na patricia, “5”, "enter", e digite o termo requerido.
+- Para exibir o numero de comparações das inserções, “6”.
